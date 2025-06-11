@@ -40,6 +40,14 @@ const styles = {
       else setGenreFilter(value);
     };
 
+    const addToFavourites = (movieId: number) => {
+    const updatedMovies = movies.map((m: BaseMovieProps) =>
+      m.id === movieId ? { ...m, favourite: true } : m
+    );
+    setMovies(updatedMovies);
+  };
+
+
     useEffect(() => {
       fetch(
         `https://api.themoviedb.org/3/discover/movie?api_key=cf899fb1da2f1175a57f4bf7d19f2929&language=en-US&include_adult=false&page=1`
@@ -62,7 +70,7 @@ const styles = {
           <Header title={"Home Page"} />
         </Grid>
         <Grid item container spacing={5}>
-          <MovieList movies={displayedMovies}></MovieList>
+           <MovieList movies={displayedMovies} selectFavourite={addToFavourites} />
         </Grid>
       </Grid>
       <Fab
