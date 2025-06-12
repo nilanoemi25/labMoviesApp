@@ -6,6 +6,8 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import { MovieDetailsProps } from "../../types/interfaces"; 
+import { Avatar } from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const styles = {
     root: {  
@@ -14,16 +16,32 @@ const styles = {
     alignItems: "center",
     flexWrap: "wrap",
     padding: 1.5,
+    avatar: {
+    backgroundColor: "rgb(255, 0, 0)",
+  },
   },
 };
 
+
 const MovieHeader: React.FC<MovieDetailsProps> = (movie) => {
-  
+const favourites = JSON.parse(localStorage.getItem("favourites") || '[]');
+let checkingId = movie.id;
+let filteredFavMovie = favourites.filter(m => m.id === checkingId);
+console.log(filteredFavMovie[0].favourite);
+
+
   return (
     <Paper component="div" sx={styles.root}>
       <IconButton aria-label="go back">
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
+          {
+                filteredFavMovie[0].favourite ? (
+                  <Avatar sx={styles.root.avatar}>
+                    <FavoriteIcon />
+                  </Avatar>
+                ) : "not favourite"
+              }
 
       <Typography variant="h4" component="h3">
         {movie.title}{"   "}

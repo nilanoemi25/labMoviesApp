@@ -20,7 +20,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = (headerProps) => {
-    const title = headerProps.title
+    const title = headerProps.title 
 
     return (
         <Paper component="div" sx={styles.root}>
