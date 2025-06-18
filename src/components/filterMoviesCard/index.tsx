@@ -49,8 +49,7 @@ const FilterMoviesCard: React.FC<FilterMoviesCardProps> = ({ titleFilter, genreF
 
   const handleChange = (e: SelectChangeEvent, type: FilterOption, value: string) => {
     e.preventDefault()
-     onUserInput(type, value)
-    // Completed later
+     onUserInput(type, value) // this is the data down action up happening. the onUserInput is coming via props. 
   };
 
   const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {

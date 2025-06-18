@@ -26,9 +26,10 @@ const styles = {
 const MovieHeader: React.FC<MovieDetailsProps> = (movie) => {
 const favourites = JSON.parse(localStorage.getItem("favourites") || '[]');
 let checkingId = movie.id;
+// what if no favourites are selected? 
 let filteredFavMovie = favourites.filter(m => m.id === checkingId);
-console.log(filteredFavMovie[0].favourite);
-
+console.log(filteredFavMovie[0]?.favourite);
+// what if filteredFavMovie is undefined? 
 
   return (
     <Paper component="div" sx={styles.root}>
@@ -36,11 +37,11 @@ console.log(filteredFavMovie[0].favourite);
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
           {
-                filteredFavMovie[0].favourite ? (
+                filteredFavMovie[0]?.favourite ? (
                   <Avatar sx={styles.root.avatar}>
                     <FavoriteIcon />
                   </Avatar>
-                ) : "not favourite"
+                ) : null 
               }
 
       <Typography variant="h4" component="h3">

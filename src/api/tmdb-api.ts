@@ -28,3 +28,13 @@ export const getMovies = () => {
       .then((res) => res.json())
       .then((json) => json.posters);
   };
+ export const getMovieReviews = (id: string | number) => { //movie id can be string or number
+    return fetch(
+      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=cf899fb1da2f1175a57f4bf7d19f2929`
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        // console.log(json.results);
+        return json.results;
+      });
+  };
