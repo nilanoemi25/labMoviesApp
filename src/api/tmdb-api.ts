@@ -38,3 +38,10 @@ export const getMovies = () => {
         return json.results;
       });
   };
+  export const getupcomingMovies = () => {
+    return fetch(
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=cf899fb1da2f1175a57f4bf7d19f2929&language=en-US&page=1`
+    )
+      .then(res => res.json())
+      .then(json => json.results);
+  };
