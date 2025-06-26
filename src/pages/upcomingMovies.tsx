@@ -9,7 +9,7 @@ import MovieFilterUI, {
 import { BaseMovieProps, DiscoverMovies } from "../types/interfaces";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
-import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
+import UpcomingMoviesAddIcon from '../components/cardIcons/playlistAdd'
 
 
 // const titleFiltering = {
@@ -57,7 +57,7 @@ const UpcomingPage: React.FC = () => {
       //  movies={displayedMovies}
       movies={movies}
         action={(movie: BaseMovieProps) => {
-          return <AddToFavouritesIcon {...movie} />
+          return <UpcomingMoviesAddIcon {...movie} />
         }}
       />
       {/* <MovieFilterUI
