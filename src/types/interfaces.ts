@@ -79,3 +79,36 @@ export interface DiscoverMovies {
     rating: number,
     movieId: number,
   }
+
+  export interface CastMember {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
+}
+
+export interface Cast {
+  id: number;
+  cast: CastMember[];
+}
+
+export interface FantasyMovie {
+  title: string;
+  overview: string;
+  genres: string;
+  release_date: string; 
+  runtime: number; 
+  production_company: number; 
+}
+
+// export interface FantasyMoviesArray {
+//   fantasymovies: FantasyMovie[]; 
+// }

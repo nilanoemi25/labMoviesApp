@@ -25,7 +25,7 @@ const genreFiltering = {
 };
 
 const FavouriteMoviesPage: React.FC = () => {
-  const { favourites: movieIds } = useContext(MoviesContext);
+  const { favourites: movieIds } = useContext(MoviesContext); // Renaming favourites to movieIds
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [titleFiltering, genreFiltering]
   );
@@ -34,8 +34,8 @@ const FavouriteMoviesPage: React.FC = () => {
   const favouriteMovieQueries = useQueries(
     movieIds.map((movieId) => {
       return {
-        queryKey: ["movie", movieId],
-        queryFn: () => getMovie(movieId.toString()),
+        queryKey: ["movie", movieId], // FROM CACHE 
+        queryFn: () => getMovie(movieId.toString()), // FETCH API 
       };
     })
   );

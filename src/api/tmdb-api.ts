@@ -80,3 +80,30 @@ export const getMovies = () => {
       throw error
     });
 };
+
+  export const getMostPopularMovies = () => {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=cf899fb1da2f1175a57f4bf7d19f2929&language=en-US&include_adult=false&page=1`
+
+  ).then((response) => {
+    if (!response.ok)
+      throw new Error(`Unable to fetch movies. Response status: ${response.status}`);
+    return response.json();
+  })
+    .catch((error) => {
+      throw error
+    });
+};
+ export const getCredits = (id: string | number) => {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=cf899fb1da2f1175a57f4bf7d19f2929`
+  ).then((response) => {
+    if (!response.ok) {
+      throw new Error(`Failed to get movie data. Response status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .catch((error) => {
+    throw error
+ });
+};

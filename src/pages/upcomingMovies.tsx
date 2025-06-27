@@ -1,15 +1,11 @@
 import React from "react";
 import PageTemplate from "../components/templateMovieListPage";
 import { getupcomingMovies } from "../api/tmdb-api";
-import useFiltering from "../hooks/useFiltering";
-import MovieFilterUI, {
-  titleFilter,
-  genreFilter,
-} from "../components/movieFilterUI";
 import { BaseMovieProps, DiscoverMovies } from "../types/interfaces";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 import UpcomingMoviesAddIcon from '../components/cardIcons/playlistAdd'
+import WriteReviewIcon from "../components/cardIcons/writeReview";
 
 
 const UpcomingPage: React.FC = () => {
@@ -31,11 +27,14 @@ const UpcomingPage: React.FC = () => {
   return (
     <>
       <PageTemplate
-        title="Discover Movies"
+      title="Upcoming Movies"
       movies={movies}
-        action={(movie: BaseMovieProps) => {
-          return <UpcomingMoviesAddIcon {...movie} />
-        }}
+      action={(movie: BaseMovieProps) => (
+        <>
+          <WriteReviewIcon {...movie} />
+          <UpcomingMoviesAddIcon {...movie} />
+        </>
+          )}
       />
     </>
   );
