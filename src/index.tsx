@@ -41,7 +41,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/upcoming" element={<UpcomingPage />} />
           <Route path="/popular" element={<PopularMoviesPage />} />
-          <Route path="/cast/:id" element={<CastPage/>} /> 
+          <Route path="/cast/:id" element={<CastPage/>} /> //Created Cast page with dynamic ID
           <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
           <Route path="/createFantasy" element={<CreateFantasyMoviePage />} />
           <Route path="*" element={<Navigate to="/" />} />
