@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent } from "react";
+import React, { useState, MouseEvent, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -11,6 +11,7 @@ import Menu from "@mui/material/Menu";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { AuthContext } from "../../contexts/authContext";
 
 const styles = {
     title: {
@@ -26,6 +27,9 @@ const SiteHeader: React.FC = () => {
   const open = Boolean(anchorEl);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
+  const { token, signout } = useContext(AuthContext) || {};
+  
+
 
   const menuOptions = [
     { label: "Home", path: "/" },
@@ -53,6 +57,7 @@ const SiteHeader: React.FC = () => {
           <Typography variant="h6" sx={styles.title}>
             All you ever wanted to know about Movies!
           </Typography>
+  
           {isMobile ? (
             <>
               <IconButton
@@ -103,7 +108,18 @@ const SiteHeader: React.FC = () => {
               ))}
             </>
           )}
+            {token ? (
+          <p>
+            Welcome! <button onClick={() => signout && signout()}>Sign out</button>
+          </p>
+        ) : (
+          <p>
+            {" "}
+            <button onClick={() => navigate("login")}>Login</button>
+          </p>
+        )}
         </Toolbar>
+      
       </AppBar>
       <Offset />
     </>

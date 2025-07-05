@@ -112,3 +112,9 @@ export interface FantasyMovie {
 // export interface FantasyMoviesArray {
 //   fantasymovies: FantasyMovie[]; 
 // }
+
+export interface AuthContextInterface {
+    token: string | null;
+    authenticate: ((username: string, password: string) => void);
+    signout: () => void;
+  }
